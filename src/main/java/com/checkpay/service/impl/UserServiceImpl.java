@@ -11,6 +11,8 @@ import com.checkpay.model.UserVO;
 import com.checkpay.repository.UserRepository;
 import com.checkpay.service.UserService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
@@ -29,6 +31,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public User getUserByPhoneNumber(Long phoneNumber) {
+		return userRepository.findByPhoneNumber(phoneNumber).orElse(null);
+	}
+
+	@Override
 	public User saveUser(UserVO user) {
 		return userRepository.save(userMappr.mapUserVoToEntity(user));
 	}
@@ -36,5 +43,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void deleteUser(Long id) {
 		userRepository.deleteById(id);
+	}
+
+	@Override
+	@Transactional
+	public void deleteUserByPhoneNumber(Long phoneNumber) {
+		userRepository.deleteByPhoneNumber(phoneNumber);	
 	}
 }
