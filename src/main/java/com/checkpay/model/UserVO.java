@@ -1,14 +1,20 @@
 package com.checkpay.model;
 
 public class UserVO {
-
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String middleName;
 	private Long phoneNumber;
-
 	private String emailId;
 	private Integer pin;
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getFirstName() {
 		return firstName;
 	}

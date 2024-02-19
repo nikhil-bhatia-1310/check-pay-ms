@@ -14,9 +14,25 @@ CREATE TABLE IF NOT EXISTS public."user"
     CONSTRAINT user_pkey PRIMARY KEY (id)
 )
 
+CREATE TABLE IF NOT EXISTS public."account" (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` VARCHAR(255) NULL DEFAULT NULL,
+  `account_number` DATETIME(6) NULL DEFAULT NULL,
+  `ifsc_code` VARCHAR(255) NULL DEFAULT NULL,
+  `bank` VARCHAR(255) NULL DEFAULT NULL,
+  `created_on` VARCHAR(255) NULL DEFAULT NULL,
+  `status` DATETIME(6) NULL DEFAULT NULL
+  PRIMARY KEY (`id`),
+  CONSTRAINT FOREIGN KEY (`user_id`)
+    REFERENCES `public`.`user` (`id`)
+)
+
 TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public."user"
+    OWNER to postgres;
+
+ALTER TABLE IF EXISTS public."account"
     OWNER to postgres;
     
 -- SEQUENCE: public.user_seq
