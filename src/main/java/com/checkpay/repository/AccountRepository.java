@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.checkpay.entity.Account;
+import com.checkpay.entity.User;
+import com.checkpay.model.AccountVO;
 
 public interface AccountRepository extends JpaRepository<Account, Long>{
 
@@ -13,5 +15,7 @@ public interface AccountRepository extends JpaRepository<Account, Long>{
 
 	void deleteById(Long id);
 
-	List<Account> findAllByUserId(Long userId);
+	List<Account> findAllByUser(User user);
+
+	void save(AccountVO account);
 }

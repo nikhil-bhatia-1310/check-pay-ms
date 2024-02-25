@@ -1,9 +1,14 @@
 package com.checkpay.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity()
@@ -11,7 +16,7 @@ import jakarta.persistence.Table;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String firstName;
 	private String lastName;
@@ -19,6 +24,15 @@ public class User {
 	private long phoneNumber;
 	private String emailId;
 	private int pin;
+	
+    //@OneToMany
+    //@JoinColumn(name = "id")
+    //private List<Account> account;
+
+	//public List<Account> getAccounts() {
+		//return account;
+	//}
+	
 	public Long getId() {
 		return id;
 	}
